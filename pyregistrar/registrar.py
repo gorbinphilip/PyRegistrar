@@ -14,6 +14,11 @@ class Field(object):
         self.field_description=description
 
 from . import models
+import glob, os
+from os.path import splitext, basename
+
+__pkg__="pyregistrar.registrar"
+
 
 def register(model, file_name, file_ext):
     pass
@@ -26,4 +31,18 @@ def get_models():
 
 def get_extensions():
     """returns list of available output file formats"""
-    pass
+    ext_dir=os.path.dirname(os.path.abspath(__file__))+"/extensions"
+    extensions=find_modules(ext_dir)
+    return extensions
+
+
+def find_modules(directory):
+    modules=[]
+    files = glob.glob("{}/*.py".format(directory))
+    for file in files:
+        if file.endswith("__init__.py"):
+            continue
+        else:
+            name, ext = splitext(basename(file))
+            modules.append(name)
+    return modules
