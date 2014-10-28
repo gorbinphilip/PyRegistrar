@@ -1,5 +1,6 @@
 from .registrar import Field
 
+__all_models__=["Alien"]
 
 class Model(object):
     """provides abstract model class for implementing different models"""
