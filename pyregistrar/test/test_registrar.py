@@ -8,3 +8,12 @@ def test_fields():
     assert field.field_type=="none"
     assert field.field_description=="this is a test field"
 
+def test_register():
+    pass
+
+def test_get_models():
+    models=registrar.get_models()
+    assert type(models)==list
+
+def test_get_extensions():
+    pass
