@@ -9,8 +9,8 @@ def test_prompt():
     field=fields.Field("test_field", "test field", fields.Field.TYPE_TEXT_ONELINE, "this is a test field")
     assert console.prompt(field).startswith("test field")==True
 
-def test_main():
+def test_input_parser():
     sys_args=['-f', 'myfile']
     exts=["test"]
     models=["test_model"]
-    assert console.main(models, exts, sys_args)==["test_model","myfile","test"]
+    assert console.input_parser(models, exts, sys_args)==["test_model","myfile","test"]

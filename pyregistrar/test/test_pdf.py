@@ -3,7 +3,7 @@ import os
 
 def test_plain():
     p=pdf.Export()
-    file="/tmp/tst.txt"
+    file="/tmp/tst3455.txt"
     data=[("name","me"), ("age","0")]
     p.export(data, file)
     assert os.path.exists(file)==True
