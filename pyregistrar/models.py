@@ -1,9 +1,11 @@
 from .fields import Field
 
-__all_models__=["Alien"]
+__all_models__=["Alien"]  #global variable used to identify available models
 
 class Model(object):
-    """provides abstract model class for implementing different models"""
+    """
+    Provides abstract model class for implementing different models
+    """
 
     def __init__(self):
         raise NotImplementedError()
@@ -19,10 +21,14 @@ class Model(object):
 
 
 class Alien(Model):
-    """Model for the alien object which can hold alien details"""
+    """
+    Model for the alien object which can hold alien details
+    """
 
     def __init__(self):
-        """initializes alien with required fields"""
+        """
+        initializes alien with required fields like 'Code Name', 'Blood Colour'.. etc
+        """
         self.fields=[]
         self.fields.append(Field("code_name", "Code Name", Field.TYPE_TEXT_ONELINE, "Name detail of the Alien"))
         self.fields.append(Field("blood_color", "Blood Colour", Field.TYPE_TEXT_ONELINE, "Colour of the blood"))
@@ -31,10 +37,19 @@ class Alien(Model):
         self.fields.append(Field("home_planet", "Home Planet", Field.TYPE_NUMBER, "Name of the home planet"))
 
     def set(self, field_id, value):
+        """
+        setter method to assign attribute
+        """
         self.field_id=value
 
     def get(self, field_id):
+        """
+        getter method to return attribute value
+        """
         return self.field_id
 
     def get_list_fields(self):
+        """
+        returns list of ordered fields/attributes associated to the model
+        """
         return self.fields
