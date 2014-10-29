@@ -2,7 +2,9 @@ from .. import registrar
 import os, random, shutil
 
 def test_register():
-    pass
+    registrar.register("Alien", "/tmp/test", "plain")
+    assert os.path.exists("/tmp/test")==True
+    os.remove("/tmp/test")
 
 def test_find_modules():
     test_dir="/tmp/"+str(random.randrange(999))
