@@ -14,15 +14,13 @@ class Field(object):
         self.field_description=description
 
 from . import models
-import glob, os
+import glob, os, importlib
 from os.path import splitext, basename
 
-__pkg__="pyregistrar.registrar"
-
+__pkg__="pyregistrar"
 
 def register(model, file_name, file_ext):
     pass
-
 
 def get_models():
     """returns list of available models"""
@@ -46,3 +44,7 @@ def find_modules(directory):
             name, ext = splitext(basename(file))
             modules.append(name)
     return modules
+
+def load_class(name, module, package):
+    mod=importlib.import_module("."+module, package)
+    return getattr(mod, name)
