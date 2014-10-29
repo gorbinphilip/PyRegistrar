@@ -1,4 +1,4 @@
-from .registrar import Field
+from .fields import Field
 
 
 def prompt(field):

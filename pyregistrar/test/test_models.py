@@ -1,5 +1,5 @@
 from ..models import Model, Alien
-from ..registrar import Field
+from ..fields import Field
 import pytest
 
 def test_Model():
