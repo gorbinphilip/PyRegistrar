@@ -47,3 +47,9 @@ def find_modules(directory):
 def load_class(name, module, package):
     mod=importlib.import_module("."+module, package)
     return getattr(mod, name)
+
+def main(arg):
+    models=get_models()
+    exts=get_extensions()
+    params=console.main(models, exts, arg)
+    register(params[0],params[1],params[2])
