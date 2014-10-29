@@ -46,6 +46,7 @@ Extensions:
 Custom extensions can be implemented by placing new extension into
 'pyregistrar.extensions'. It is mandatory to make sure that the
 extension added should obey the following constranins.
+
        	  module: any qualified module name.
        	  class : Export(), no arguments.
        	  method: export(data_list, file_name), where data_list will get
