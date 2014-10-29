@@ -14,7 +14,7 @@ class Export(object):
         x=30
         y=720
         for k, v in data_list:
-            my_canvas.drawString(x, y, k+"       :"+v)
+            my_canvas.drawString(x, y, k+"       : "+v)
             y=y-20
         my_canvas.save()
     

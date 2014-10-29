@@ -6,5 +6,5 @@ class Export(object):
     def export(self, data_list, file_name):
         file=open(file_name, "w")
         for k, v in data_list:
-            file.write(k+"\t\t:"+v+"\n")
+            file.write(k+"\t\t: "+v+"\n")
         file.close()
