@@ -38,15 +38,16 @@ Development:
 Models:
 
 Custom models can be added to 'pyregistrar.models' by implementing
-Model and adding it to the global var __all_models__.
+Model and adding it to the global var __all_models__. Model should
+specify attributes using the Field from fields.
 
 Extensions:
 
 Custom extensions can be implemented by placing new extension into
 'pyregistrar.extensions'. It is mandatory to make sure that the
 extension added should obey the following constranins.
-       module: any qualified module name
-       class : Export(), no arguments
-       method: export(data_list, file_name), where data_list will get
-       	       iterable list of 2 tuples as key and attribute and file_name
-      	       will receive absolute name for the file to be created.
+       	  module: any qualified module name.
+       	  class : Export(), no arguments.
+       	  method: export(data_list, file_name), where data_list will get
+       	       	  iterable list of 2 tuples as key and attribute and file_name
+      	      	  will receive absolute name for the file to be created.
