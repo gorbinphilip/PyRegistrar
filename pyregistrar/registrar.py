@@ -62,17 +62,14 @@ def find_modules(directory):
     returns list of names of modules in the directory excluding __init__.py file
     """
     modules=[]
-    try:
-        files = glob.glob("{}/*.py".format(directory))
-        for file in files:
-            if file.endswith("__init__.py"):
-                continue
-            else:
-                name, ext = splitext(basename(file))
-                modules.append(name)
-        return modules
-    except Exception:
-        raise ExtensionError("unable to search modules")
+    files = glob.glob("{}/*.py".format(directory))
+    for file in files:
+        if file.endswith("__init__.py"):
+            continue
+        else:
+            name, ext = splitext(basename(file))
+            modules.append(name)
+    return modules
 
 def load_class(name, module, package):
     """

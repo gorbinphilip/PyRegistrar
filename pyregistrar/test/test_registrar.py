@@ -1,10 +1,13 @@
 from .. import registrar
-import os, random, shutil
+from ..exceptions import ExtensionError, ModelError, RegistrarError
+import os, random, shutil, pytest
 
 def test_register():
     registrar.register("Alien", "/tmp/test9999", "plain")
     assert os.path.exists("/tmp/test9999")==True
     os.remove("/tmp/test9999")
+    with pytest.raises(RegistrarError):
+        registrar.register("test","/tmp/ddf","plain")
 
 def test_find_modules():
     test_dir="/tmp/"+str(random.randrange(999))
@@ -26,3 +29,16 @@ def test_get_models():
 def test_get_extensions():
     extensions=registrar.get_extensions()
     assert type(extensions)==list
+
+def test_load_class():
+    with pytest.raises(ExtensionError):
+        registrar.load_class("fail","fail","fail")
+
+def test_main():
+    ret=registrar.main(["-f","/tmp/343545456"])
+    assert ret=="/tmp/343545456"
+    try:
+        os.remove("/tmp/343545456")
+    except Exception:
+        pass
+    assert type(registrar.main(["-f","/fail"]))==ExtensionError

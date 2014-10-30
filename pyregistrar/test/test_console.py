@@ -1,4 +1,6 @@
 from .. import console, fields
+from ..exceptions import ConsoleError
+import pytest
 
 def custom_mirror_input(field):
     return field
@@ -14,3 +16,5 @@ def test_input_parser():
     exts=["test"]
     models=["test_model"]
     assert console.input_parser(models, exts, sys_args)==["test_model","myfile","test"]
+    with pytest.raises(ConsoleError):
+        console.input_parser("", "", sys_args)
