@@ -5,14 +5,25 @@ import random
 
 
 def prompt(field):
-    """method to prompt and return user input.
-    :field instance of registrar.Field"""
+    """
+    method to prompt and return user input.
+    :field instance of registrar.Field
+    """
     try:
-        input_data=raw_input(field.field_name+" :-> ")
         if field.field_type==Field.TYPE_NONE:
-            pass
+            print field.field_name
+            return
         else:
-            return input_data
+            input_data=raw_input(field.field_name+" :-> ")
+            if field.field_type==Field.TYPE_NUMBER:
+                try:
+                    float(input_data)
+                    return input_data
+                except ValueError:
+                    print "Invalid input..Retry"
+                    return prompt(field)
+            else:
+                return input_data
     except Exception:
         raise ConsoleError("unable to prompt user")
 

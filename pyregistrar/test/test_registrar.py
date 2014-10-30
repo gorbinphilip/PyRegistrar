@@ -1,6 +1,9 @@
-from .. import registrar
+from .. import registrar,console
 from ..exceptions import ExtensionError, ModelError, RegistrarError
+from . import mock
 import os, random, shutil, pytest
+
+console.raw_input=mock.raw_input
 
 def test_register():
     registrar.register("Alien", "/tmp/test9999", "plain")
@@ -42,3 +45,4 @@ def test_main():
     except Exception:
         pass
     assert type(registrar.main(["-f","/fail"]))==ExtensionError
+
